@@ -3,6 +3,7 @@ package com.tictactoe;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Field {
@@ -37,6 +38,7 @@ public class Field {
                 .sorted(Map.Entry.comparingByKey())
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
+
     }
 
     public Sign checkWin() {
@@ -49,14 +51,15 @@ public class Field {
                 List.of(2, 5, 8),
                 List.of(0, 4, 8),
                 List.of(2, 4, 6)
-        );
+                );
 
         for (List<Integer> winPossibility : winPossibilities) {
             if (field.get(winPossibility.get(0)) == field.get(winPossibility.get(1))
-                && field.get(winPossibility.get(0)) == field.get(winPossibility.get(2))) {
+                    && field.get(winPossibility.get(0)) == field.get(winPossibility.get(2))) {
                 return field.get(winPossibility.get(0));
             }
         }
+        System.out.println("FOO");
         return Sign.EMPTY;
     }
 }
